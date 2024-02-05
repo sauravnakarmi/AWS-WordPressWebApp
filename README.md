@@ -23,4 +23,4 @@ Figure 4
 
 Step 2: Attaching a NAT Gateway
 
-Nat Gateways are used in order to give internet access to the application tier so that the EC2 instances can download patches while users are not able to access the EC2 instances. Keeping the EC2 instance in the private subnet is security best practice since it protects our EC2 instances from being accessed by users on the internet and potentially executing malicious attacks on the instances. 
+Nat Gateways are used in order to give internet access to the application tier so that the EC2 instances can download patches while users are not able to access the EC2 instances. Keeping the EC2 instance in the private subnet is security best practice since it protects our EC2 instances from being accessed by users on the internet and potentially executing malicious attacks on the instances. I started by creating 2 Elastic Ip addresses that would be used for the NAT Gateways. I then created the NAT gateways and attached elastic ip addresses. In order to properly route traffic from the EC2 instance to the NAT Gateway I had to add a route in the route table from the private route tables to the NAT Gateways. 
