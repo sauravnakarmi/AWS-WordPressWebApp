@@ -23,4 +23,12 @@ Figure 4
 
 Step 2: Attaching a NAT Gateway
 
-Nat Gateways are used in order to give internet access to the application tier so that the EC2 instances can download patches while users are not able to access the EC2 instances. Keeping the EC2 instance in the private subnet is security best practice since it protects our EC2 instances from being accessed by users on the internet and potentially executing malicious attacks on the instances. I started by creating 2 Elastic Ip addresses that would be used for the NAT Gateways. I then created the NAT gateways and attached elastic ip addresses. In order to properly route traffic from the EC2 instance to the NAT Gateway I had to add a route in the route table from the private route tables to the NAT Gateways. 
+![NatGatewayDiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/93b0a368-5f3b-4203-9f32-2fdb7a4d2363)
+
+Nat Gateways are used in order to give internet access to the application tier so that the EC2 instances can download patches while users are not able to access the EC2 instances. Keeping the EC2 instance in the private subnet is security best practice since it protects our EC2 instances from being accessed by users on the internet and potentially executing malicious attacks on the instances. I started by creating 2 Elastic Ip addresses that would be used for the NAT Gateways (Figure 5). I then created the NAT gateways and attached elastic ip addresses (Figure 6). In order to properly route traffic from the EC2 instance to the NAT Gateway I had to add a route in the route table from the private route tables to the NAT Gateways. 
+
+Figure 5
+![ElasticIp](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/3ba2c18d-ee70-4c91-987d-a422c2e85d87)
+
+Figure 6
+![NatGateway](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/921aa575-fcbe-4483-accb-42dd9405851a)
