@@ -44,3 +44,10 @@ Figure 8
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/b5183c15-aa12-4a96-82e0-f64fb7561d3f)
 
 Step 4: Creating a MYSQL Database
+
+![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/1d56f4c1-bbb2-4742-9611-372bc7f05b58)
+
+Putting a database in a private subnet enhances its security posture, reduces the risk of unauthorized access and data breaches, and helps organizations comply with regulatory requirements.
+
+
+
