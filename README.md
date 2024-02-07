@@ -38,4 +38,9 @@ Figure 7
 
 Step 3: Controlling Traffic with Security Groups
 
-There are 4 main security groups that must be made in order to ensure proper routing of traffic in the Web application. The first security group routes traffic from the internet into the application load balancer. The second security group only allows traffic from the application load balancer to reach the web servers. The third security group ensures that database servers only accepts traffic from the webservers. Finally, the EFS will only accept traffic from the web servers. 
+There are 4 main security groups that must be made in order to ensure proper routing of traffic in the Web application (Figure 8). The first security group routes traffic from the internet into the application load balancer. The second security group only allows traffic from the application load balancer to reach the web servers. The third security group ensures that database servers only accepts traffic from the webservers. Finally, the EFS will only accept traffic from the web servers. 
+
+Figure 8
+![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/b5183c15-aa12-4a96-82e0-f64fb7561d3f)
+
+Step 4: Creating a MYSQL Database
