@@ -1,7 +1,7 @@
 # AWS-WordPressWebApp
 Overview: This project aims to design and implement a robust, multi-tier WordPress web application infrastructure on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
 
-Step 1: Building a Secure Network - Three Tier Application Infrastructure
+## Step 1: Building a Secure Network - Three Tier Application Infrastructure
 
 "The multi-tier architecture pattern provides a general framework to ensure decoupled and independently scalable application components can be separately developed, managed, and maintained" (from the AWS website). 
 
@@ -21,7 +21,7 @@ Figure 3
 Figure 4
 ![RoutTables](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/daa7390b-444c-4943-805e-f3ffda44d709)
 
-Step 2: Attaching a NAT Gateway
+## Step 2: Attaching a NAT Gateway
 
 ![NatGatewayDiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/93b0a368-5f3b-4203-9f32-2fdb7a4d2363)
 
@@ -36,14 +36,14 @@ Figure 6
 Figure 7
 ![NatGatewayRouteTable](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/d8c9a1a3-4267-4ded-bafc-5468d8280562)
 
-Step 3: Controlling Traffic with Security Groups
+## Step 3: Controlling Traffic with Security Groups
 
 There are 4 main security groups that must be made in order to ensure proper routing of traffic in the Web application (Figure 8). The first security group routes traffic from the internet into the application load balancer. The second security group only allows traffic from the application load balancer to reach the web servers. The third security group ensures that database servers only accepts traffic from the webservers. Finally, the EFS will only accept traffic from the web servers. 
 
 Figure 8
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/b5183c15-aa12-4a96-82e0-f64fb7561d3f)
 
-Step 4: Creating a MYSQL Database
+## Step 4: Creating a MYSQL Database
 
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/1d56f4c1-bbb2-4742-9611-372bc7f05b58)
 
@@ -55,13 +55,14 @@ Figure 9
 Figure 10
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/8113a7c3-b36a-495f-ac89-bde71dab713e)
 
-Step 5: Attaching an EFS
+## Step 5: Attaching an EFS
 
 The primary purpose of Amazon EFS is to provide scalable, elastic, and highly available file storage.
 
 ![efsdiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/38ec656d-7f4a-4d3d-aa0e-75d4d2540329)
 
-In our case we are using the EFS as a way to store our application code, namely the WordPress installation, that our webservers will pull from. 
+In our case we are using the EFS as a way to store our application code, namely the WordPress installation, that our webservers will pull from. We need to create an EFS with mount targets in each of the availability zones of our private subnet databases. Once the EFS is done being created we need to attach it to our EC2 instance using the code provided. 
 
+Figure 11
 ![efs](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/18477997-ef5f-4322-919a-47930cfc1568)
 
