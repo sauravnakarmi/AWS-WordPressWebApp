@@ -68,5 +68,5 @@ Figure 11
 
 ## Step 6: Installing WordPress and Moving Files to EFS
 
-
+We will start by creating a security group that allows us to SSH into our EC2 instance (Figure 
 
