@@ -25,7 +25,7 @@ Step 2: Attaching a NAT Gateway
 
 ![NatGatewayDiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/93b0a368-5f3b-4203-9f32-2fdb7a4d2363)
 
-Nat Gateways are used in order to give internet access to the application tier so that the EC2 instances can download patches while users are not able to access the EC2 instances. Keeping the EC2 instance in the private subnet is security best practice since it protects our EC2 instances from being accessed by users on the internet and potentially executing malicious attacks on the instances. I started by creating 2 Elastic Ip addresses that would be used for the NAT Gateways (Figure 5). I then created the NAT gateways and attached elastic ip addresses (Figure 6). In order to properly route traffic from the EC2 instance to the NAT Gateway I had to add a route in the route table from the private route tables to the NAT Gateways (Figure 7). 
+Nat Gateways are used in order to give internet access to the application tier so that the EC2 instances can download patches while users are not able to access the EC2 instances. Keeping the EC2 instance in the private subnet is security best practice since it protects our EC2 instances from being accessed by users on the internet and potentially executing malicious attacks on the instances. I started by creating 2 Elastic Ip addresses that would be used for the NAT Gateways (figure 5). I then created the NAT gateways and attached elastic ip addresses (figure 6). In order to properly route traffic from the EC2 instance to the NAT Gateway I had to add a route in the route table from the private route tables to the NAT Gateways (figure 7). 
 
 Figure 5
 ![ElasticIp](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/3ba2c18d-ee70-4c91-987d-a422c2e85d87)
@@ -47,7 +47,8 @@ Step 4: Creating a MYSQL Database
 
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/1d56f4c1-bbb2-4742-9611-372bc7f05b58)
 
-Putting a database in a private subnet enhances its security posture, reduces the risk of unauthorized access and data breaches, and helps organizations comply with regulatory requirements.
+Putting a database in a private subnet enhances its security posture, reduces the risk of unauthorized access and data breaches, and helps organizations comply with regulatory requirements. In order to do so a database subnet group needs to be created so that our database can be added when we eventually create it (figure 9). We then create our database and add it to the database subnet group (Figure 10). 
 
-
+Figure 9
+![dbsubnets](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/74915534-cc31-49a4-84c4-e2ff35521662)
 
