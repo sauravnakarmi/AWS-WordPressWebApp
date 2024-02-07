@@ -37,4 +37,5 @@ Figure 7
 ![NatGatewayRouteTable](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/d8c9a1a3-4267-4ded-bafc-5468d8280562)
 
 Step 3: Controlling Traffic with Security Groups
+
 There are 4 main security groups that must be made in order to ensure proper routing of traffic in the Web application. The first security group routes traffic from the internet into the application load balancer. The second security group only allows traffic from the application load balancer to reach the web servers. The third security group ensures that database servers only accepts traffic from the webservers. Finally, the EFS will only accept traffic from the web servers. 
