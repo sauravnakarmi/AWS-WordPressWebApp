@@ -66,3 +66,7 @@ In our case we are using the EFS as a way to store our application code, namely 
 Figure 11
 ![efs](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/18477997-ef5f-4322-919a-47930cfc1568)
 
+## Step 6: Installing WordPress and Moving Files to EFS
+
+
+
