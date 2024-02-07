@@ -59,6 +59,9 @@ Step 5: Attaching an EFS
 
 The primary purpose of Amazon EFS is to provide scalable, elastic, and highly available file storage.
 
-![efs](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/18477997-ef5f-4322-919a-47930cfc1568)
+![efsdiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/38ec656d-7f4a-4d3d-aa0e-75d4d2540329)
 
 In our case we are using the EFS as a way to store our application code, namely the WordPress installation, that our webservers will pull from. 
+
+![efs](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/18477997-ef5f-4322-919a-47930cfc1568)
+
