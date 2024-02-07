@@ -52,3 +52,6 @@ Putting a database in a private subnet enhances its security posture, reduces th
 Figure 9
 ![dbsubnets](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/74915534-cc31-49a4-84c4-e2ff35521662)
 
+Figure 10
+![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/8113a7c3-b36a-495f-ac89-bde71dab713e)
+
