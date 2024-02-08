@@ -72,3 +72,7 @@ To begin, we'll establish a security group enabling SSH access to our EC2 instan
 
 Figure 12
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/eb0dfd3b-9ae4-4f28-abaf-89f587d514c7)
+
+## Step 7: Application Load Balancer
+
+In order to have a properly functioning application load balancer, multiple EC2 instances are required. So, we start by creating a new EC2 instance. However, this time we have transfered the Wordpress files to our EFS so the deployment of the second EC2 instance will be much quicker. -
