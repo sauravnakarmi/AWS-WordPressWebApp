@@ -68,4 +68,7 @@ Figure 11
 
 ## Step 6: Installing WordPress and Moving Files to EFS
 
-To begin, we'll establish a security group enabling SSH access to our EC2 instance. Following this, adjustments to the EFS and Webserver Security Group rules will permit inbound traffic for SSH connections. Once configured, we'll proceed to launch the EC2 instance. After its deployment, we'll SSH into the instance to install WordPress. Subsequently, we'll transfer the WordPress files to our EFS. With this step completed, WordPress will be accessible from the EC2 instance.
+To begin, we'll establish a security group enabling SSH access to our EC2 instance. Following this, adjustments to the EFS and Webserver Security Group rules will permit inbound traffic for SSH connections. Once configured, we'll proceed to launch the EC2 instance (Figure 12). After its deployment, we'll SSH into the instance to install WordPress. Subsequently, we'll transfer the WordPress files to our EFS. With this step completed, WordPress will be accessible from the EC2 instance.
+
+Figure 12
+![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/eb0dfd3b-9ae4-4f28-abaf-89f587d514c7)
