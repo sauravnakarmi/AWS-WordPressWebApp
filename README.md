@@ -1,5 +1,5 @@
 # AWS-WordPressWebApp
-Overview: This project aims to design and implement a robust, multi-tier WordPress web application infrastructure on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
+Overview: This project aims to design and implement a robust, multi-tier WordPress web application on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
 
 # Final Product
 ![finishedinfrastructure](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/94fa7c85-38fc-412b-ad5a-deb5c3d0c4e1)
@@ -13,7 +13,7 @@ Overview: This project aims to design and implement a robust, multi-tier WordPre
 
 ![WebApplicationStage1](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/092605ba-29ba-4218-a83c-ee35cc594b05)
 
-The initial phase of crafting a WordPress web application involves network setup. Commencing with the creation of a VPC within the us-east-1 region, as illustrated in Figure 1, I proceeded by affixing an internet gateway to provide internet connectivity to the public subnets, depicted in Figure 2. Subsequently, I delineated both public and private subnets, as showcased in Figure 3. The public subnets serve as the interface for user interaction with the web application. Meanwhile, the first and second private subnets constitute the application tier, managing traffic from the application load balancer and housing EC2 instances housing the WordPress installation. The third and fourth subnets form the database tier, housing critical data such as WordPress files. To ensure proper internet access for the public subnets and efficient routing of VPC traffic to the private subnets, I crafted route tables. This included establishing a public route table, equipped with an internet gateway to furnish internet access to the public subnet, alongside a private route table devoid of such attachment, as depicted in Figure 4. These route tables were subsequently linked to their respective public and private subnets.
+The initial phase of crafting a WordPress web application involves network setup. Commencing with the creation of a VPC within the us-east-1 region, as illustrated in Figure 1, I proceeded by adding an internet gateway to provide internet connectivity to the public subnets, depicted in Figure 2. Subsequently, I delineated both public and private subnets, as showcased in Figure 3. The public subnets serve as the interface for user interaction with the web application. Meanwhile, the first and second private subnets constitute the application tier, managing traffic from the application load balancer and housing EC2 instances with the WordPress installation. The third and fourth subnets form the database tier, housing critical data such as WordPress files. To ensure proper internet access for the public subnets and efficient routing of VPC traffic to the private subnets, I created route tables. This included establishing a public route table, with an internet gateway to allow for internet access to the public subnet, alongside a private route table with no internet gateway, as depicted in Figure 4. These route tables were subsequently linked to their respective public and private subnets.
 
 Figure 1
 ![vpc](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/5606d210-5c04-4380-8572-d6021c8e1e8f)
@@ -29,9 +29,11 @@ Figure 4
 
 ## Step 2: Attaching a NAT Gateway
 
+NAT Gateways serve a crucial role in granting internet access to the application tier while safeguarding EC2 instances from direct user access, thereby adhering to security best practices. This setup allows EC2 instances to download patches without potential malicious user intervention.
+
 ![NatGatewayDiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/93b0a368-5f3b-4203-9f32-2fdb7a4d2363)
 
-NAT Gateways serve a crucial role in granting internet access to the application tier while safeguarding EC2 instances from direct user access, thereby adhering to security best practices. This setup allows EC2 instances to download patches seamlessly without user intervention. Initiating the process, I provisioned two Elastic IP addresses designated for NAT Gateways, as delineated in Figure 5. Subsequently, the NAT Gateways were instantiated and associated with their respective Elastic IP addresses, as depicted in Figure 6. To ensure smooth traffic routing from the EC2 instances to the NAT Gateways, I configured route tables within the private subnet, establishing routes directing traffic to the NAT Gateways, as outlined in Figure 7.
+Initiating the process, I provisioned two Elastic IP addresses designated for NAT Gateways, as delineated in Figure 5. Subsequently, the NAT Gateways were instantiated and associated with their respective Elastic IP addresses, as depicted in Figure 6. To ensure smooth traffic routing from the EC2 instances to the NAT Gateways, I configured route tables within the private subnet, establishing routes directing traffic to the NAT Gateways, as outlined in Figure 7.
 
 Figure 5
 ![ElasticIp](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/3ba2c18d-ee70-4c91-987d-a422c2e85d87)
@@ -44,16 +46,18 @@ Figure 7
 
 ## Step 3: Controlling Traffic with Security Groups
 
-To ensure seamless traffic routing within the web application (as depicted in Figure 8), four primary security groups are imperative. The initial security group facilitates the ingress of traffic from the internet into the application load balancer. Subsequently, the second security group meticulously restricts traffic exclusively from the application load balancer to access the web servers. Furthermore, the third security group meticulously governs that database servers solely accept traffic originating from the web servers. Lastly, the EFS is configured to solely accept traffic emanating from the web servers.
+To ensure seamless traffic routing within the web application (as depicted in Figure 8), four primary security groups are imperative. The initial security group facilitates the ingress of traffic from the internet into the application load balancer. Subsequently, the second security group allows traffic exclusively from the application load balancer to access the web servers. Furthermore, the third security group makes it so that the database servers solely accept traffic from the web servers. Lastly, the EFS is configured to solely accept traffic from the web servers.
 
 Figure 8
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/b5183c15-aa12-4a96-82e0-f64fb7561d3f)
 
 ## Step 4: Creating a MYSQL Database
 
+Putting a database in a private subnet enhances its security posture, reduces the risk of unauthorized access and data breaches, and helps organizations comply with regulatory requirements.
+
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/1d56f4c1-bbb2-4742-9611-372bc7f05b58)
 
-Putting a database in a private subnet enhances its security posture, reduces the risk of unauthorized access and data breaches, and helps organizations comply with regulatory requirements. To facilitate this process, we commence by establishing a database subnet group to accommodate our forthcoming database deployment (refer to Figure 9). Subsequently, we proceed with the creation of our database and its inclusion within the designated database subnet group (as illustrated in Figure 10).
+ To facilitate this process, we start by establishing a database subnet group to accommodate our database deployment (refer to Figure 9). Subsequently, we proceed with the creation of our database and add it to its designated database subnet group (as illustrated in Figure 10).
 
 Figure 9
 ![dbsubnets](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/74915534-cc31-49a4-84c4-e2ff35521662)
@@ -67,7 +71,7 @@ The primary purpose of Amazon EFS is to provide scalable, elastic, and highly av
 
 ![efsdiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/38ec656d-7f4a-4d3d-aa0e-75d4d2540329)
 
-In our setup, we utilize EFS as the repository for our application code, specifically the WordPress installation, which our webservers will access. The first step involves creating an EFS with mount targets across all availability zones within our private subnet databases. Once the EFS setup is complete, we'll attach it to our EC2 instance.
+In our setup, we utilize EFS as the repository for our application code, specifically the WordPress installation, which our webservers will access. The first step involves creating an EFS with mount targets across two availability zones within our private subnet databases. Once the EFS setup is complete, we'll attach it to our EC2 instance.
 
 Figure 11
 ![efs](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/18477997-ef5f-4322-919a-47930cfc1568)
