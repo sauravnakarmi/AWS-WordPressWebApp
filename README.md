@@ -1,15 +1,15 @@
 # AWS-WordPressWebApp
 
-# Overview
+## Overview
 This project aims to design and implement a robust, multi-tier WordPress web application on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
 
-# Challenges Faced
+## Challenges Faced
 
 
-# Final Product
+## Final Product
 ![finishedinfrastructure](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/94fa7c85-38fc-412b-ad5a-deb5c3d0c4e1)
 
-# Steps
+## Steps
 
 ### Step 1: Building a Secure Network - Three Tier Application Infrastructure
 
@@ -31,7 +31,7 @@ Figure 3
 Figure 4
 ![RoutTables](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/daa7390b-444c-4943-805e-f3ffda44d709)
 
-## Step 2: Attaching a NAT Gateway
+### Step 2: Attaching a NAT Gateway
 
 NAT Gateways serve a crucial role in granting internet access to the application tier while safeguarding EC2 instances from direct user access, thereby adhering to security best practices. This setup allows EC2 instances to download patches without potential malicious user intervention.
 
@@ -48,14 +48,14 @@ Figure 6
 Figure 7
 ![NatGatewayRouteTable](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/d8c9a1a3-4267-4ded-bafc-5468d8280562)
 
-## Step 3: Controlling Traffic with Security Groups
+### Step 3: Controlling Traffic with Security Groups
 
 To ensure seamless traffic routing within the web application (as depicted in Figure 8), four primary security groups are imperative. The initial security group facilitates the ingress of traffic from the internet into the application load balancer. Subsequently, the second security group allows traffic exclusively from the application load balancer to access the web servers. Furthermore, the third security group makes it so that the database servers solely accept traffic from the web servers. Lastly, the EFS is configured to solely accept traffic from the web servers.
 
 Figure 8
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/b5183c15-aa12-4a96-82e0-f64fb7561d3f)
 
-## Step 4: Creating a MYSQL Database
+### Step 4: Creating a MYSQL Database
 
 Putting a database in a private subnet enhances its security posture, reduces the risk of unauthorized access and data breaches, and helps organizations comply with regulatory requirements.
 
@@ -69,7 +69,7 @@ Figure 9
 Figure 10
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/8113a7c3-b36a-495f-ac89-bde71dab713e)
 
-## Step 5: Attaching an EFS
+### Step 5: Attaching an EFS
 
 The primary purpose of Amazon EFS is to provide scalable, elastic, and highly available file storage.
 
@@ -80,7 +80,7 @@ In our setup, we utilize EFS as the repository for our application code, specifi
 Figure 11
 ![efs](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/18477997-ef5f-4322-919a-47930cfc1568)
 
-## Step 6: Installing WordPress and Moving Files to EFS
+### Step 6: Installing WordPress and Moving Files to EFS
 
 ![FinalDiagram](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/4475e295-5baa-4816-81cc-a74941905f65)
 
@@ -89,12 +89,12 @@ To begin, we'll establish a security group enabling SSH access to our EC2 instan
 Figure 12
 ![image](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/eb0dfd3b-9ae4-4f28-abaf-89f587d514c7)
 
-## Step 7: Application Load Balancer
+### Step 7: Application Load Balancer
 
 ![finishedinfrastructure](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/a91c41ad-1354-4e9b-9251-6df05f3e6cf5)
 
 In order to have a properly functioning application load balancer, multiple EC2 instances are required. So, we start by creating a new EC2 instance. However, this time we have transfered the Wordpress files to our EFS so the deployment of the second EC2 instance will be much quicker. Once the EC2 instances have been created we can start with the creation of the application load balancer, making sure to add the two EC2 instances we have created into the target group. With that we should be able to access the WebApp from the application load balancer link.
 
-# Conclusion
+## Conclusion
 The inital goal of this project was to implement as many AWS technologies into a project as I could, in an effort to familiarize myself with AWS as a platform. This project helped me gain a deeper understanding of cloud computing concepts, such as infrastructure as a service, platform as a service, and software as a service. Designing a three-tiered web application requires thoughtlful consideration of architecture components, including frontend, backend, and databse layers. I learned how to architect scalable, reliable, and secure applications using AWS services like Amazon EC2 to host web servers, Amazon RDS for managing databases and Amazon Route 53 for DNS management. I also gained experinece in deploying and managing applications in a cloud environment using the AWS Management console. Along with managing permissions and security with Security groups, routing tables, public and private subnets. One of the benefits of using AWS is its ability to scale resources based on demand. This was utilized with the use of an application load balancer which allowed traffic to be evenly distributed. Another feature that AWS offers is fault tolerance and high availibility. I used mult-az deployment to make use of both of these features. Security is a top priority when deploying applications in the cloud. I learned about AWS security practices including network security, compliance, and routing network traffic. Overall, creating a three-tiered web application in AWS provided me with valuable hands-on experience with cloud techonologies and prepared me for designing, deploying, and managing modern web applications in a scalable and cost-effective manner. 
 
