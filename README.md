@@ -1,9 +1,10 @@
 # AWS-WordPressWebApp
-Overview: This project aims to design and implement a robust, multi-tier WordPress web application on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
+
+# Overview
+This project aims to design and implement a robust, multi-tier WordPress web application on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
 
 # Final Product
 ![finishedinfrastructure](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/94fa7c85-38fc-412b-ad5a-deb5c3d0c4e1)
-
 
 # Steps
 
@@ -91,4 +92,5 @@ Figure 12
 
 In order to have a properly functioning application load balancer, multiple EC2 instances are required. So, we start by creating a new EC2 instance. However, this time we have transfered the Wordpress files to our EFS so the deployment of the second EC2 instance will be much quicker. Once the EC2 instances have been created we can start with the creation of the application load balancer, making sure to add the two EC2 instances we have created into the target group. With that we should be able to access the WebApp from the application load balancer link.
 
-
+#Conclusion
+The inital goal of this project was to 
