@@ -83,6 +83,8 @@ Figure 12
 
 ## Step 7: Application Load Balancer
 
+![finishedinfrastructure](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/a91c41ad-1354-4e9b-9251-6df05f3e6cf5)
+
 In order to have a properly functioning application load balancer, multiple EC2 instances are required. So, we start by creating a new EC2 instance. However, this time we have transfered the Wordpress files to our EFS so the deployment of the second EC2 instance will be much quicker. Once the EC2 instances have been created we can start with the creation of the application load balancer, making sure to add the two EC2 instances we have created into the target group. With that we should be able to access the WebApp from the application load balancer link.
 
 
