@@ -3,6 +3,9 @@
 # Overview
 This project aims to design and implement a robust, multi-tier WordPress web application on Amazon Web Services (AWS), incorporating Virtual Private Cloud (VPC), Elastic Compute Cloud (EC2), Application Load Balancer (ALB), Relational Database Service (RDS), and Elastic File System (EFS). The primary goal is to achieve high availability and fault tolerance while maintaining scalability and security. I refrenced AOS notes tutorial when building this architecture (@AOS Note is his youtube channel). 
 
+# Challenges Faced
+
+
 # Final Product
 ![finishedinfrastructure](https://github.com/sauravnakarmi/AWS-WordPressWebApp/assets/70821330/94fa7c85-38fc-412b-ad5a-deb5c3d0c4e1)
 
@@ -92,5 +95,6 @@ Figure 12
 
 In order to have a properly functioning application load balancer, multiple EC2 instances are required. So, we start by creating a new EC2 instance. However, this time we have transfered the Wordpress files to our EFS so the deployment of the second EC2 instance will be much quicker. Once the EC2 instances have been created we can start with the creation of the application load balancer, making sure to add the two EC2 instances we have created into the target group. With that we should be able to access the WebApp from the application load balancer link.
 
-#Conclusion
-The inital goal of this project was to 
+# Conclusion
+The inital goal of this project was to implement as many AWS technologies into a project as I could, in an effort to familiarize myself with AWS as a platform. This project helped me gain a deeper understanding of cloud computing concepts, such as infrastructure as a service, platform as a service, and software as a service. Designing a three-tiered web application requires thoughtlful consideration of architecture components, including frontend, backend, and databse layers. I learned how to architect scalable, reliable, and secure applications using AWS services like Amazon EC2 to host web servers, Amazon RDS for managing databases and Amazon Route 53 for DNS management. I also gained experinece in deploying and managing applications in a cloud environment using the AWS Management console. Along with managing permissions and security with Security groups, routing tables, public and private subnets. One of the benefits of using AWS is its ability to scale resources based on demand. This was utilized with the use of an application load balancer which allowed traffic to be evenly distributed. Another feature that AWS offers is fault tolerance and high availibility. I used mult-az deployment to make use of both of these features. Security is a top priority when deploying applications in the cloud. I learned about AWS security practices including network security, compliance, and routing network traffic. Overall, creating a three-tiered web application in AWS provided me with valuable hands-on experience with cloud techonologies and prepared me for designing, deploying, and managing modern web applications in a scalable and cost-effective manner. 
+
