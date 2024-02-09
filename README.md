@@ -11,7 +11,7 @@ This project aims to design and implement a robust, multi-tier WordPress web app
 
 # Steps
 
-## Step 1: Building a Secure Network - Three Tier Application Infrastructure
+### Step 1: Building a Secure Network - Three Tier Application Infrastructure
 
 "The multi-tier architecture pattern provides a general framework to ensure decoupled and independently scalable application components can be separately developed, managed, and maintained" (from the AWS website). 
 
